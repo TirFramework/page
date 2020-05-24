@@ -102,6 +102,11 @@ class Page extends CrudModel
                                 'visible'   => 'ice',
                             ],
                             [
+                                'name'      => 'slug',
+                                'type'      => 'text',
+                                'visible'   => 'ice',
+                            ],
+                            [
                                 'name'      => 'body',
                                 'type'      => 'textEditor',
                                 'visible'   => 'ice',
