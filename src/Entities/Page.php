@@ -5,6 +5,7 @@ namespace Tir\Page\Entities;
 use Astrotomic\Translatable\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Tir\Crud\Support\Eloquent\CrudModel;
+use Tir\Crud\Support\Facades\Crud;
 
 class Page extends CrudModel
 {
@@ -141,7 +142,10 @@ class Page extends CrudModel
             return '#';
         }
 
-        return localized_url(locale(), $this->slug);
+        return '/page/'.$this->slug;
+
+        //TODO:localized url check
+        //return localized_url(Crud::locale(), $this->slug);
     }
 
 
