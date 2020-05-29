@@ -70,6 +70,9 @@ class Page extends CrudModel
     {
         return [
             'name' => 'required',
+            'slug' => 'required',
+            'is_active' => 'required',
+            'body' => 'required'
         ];
     }
 
