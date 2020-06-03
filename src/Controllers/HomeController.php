@@ -11,7 +11,7 @@ class HomeController
      */
     public function show()
     {
-        return view('storefront::public.home.index');
+        return view(config('crud.front-template').'::public.home.index');
     }
 }
 
