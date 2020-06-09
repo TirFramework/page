@@ -4,6 +4,8 @@ namespace Tir\Page\Controllers;
 
 
 
+use Tir\Menu\Entities\MenuItem;
+
 class HomeController
 {
     /**
