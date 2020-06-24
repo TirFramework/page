@@ -17,7 +17,6 @@ class PageServiceProvider extends ServiceProvider
 
     public function register()
     {
-
     }
 
     /**
@@ -28,20 +27,23 @@ class PageServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        $this->loadRoutesFrom(__DIR__.'/Routes/public.php');
+        $this->loadRoutesFrom(__DIR__ . '/Routes/public.php');
 
-        $this->loadRoutesFrom(__DIR__.'/Routes/admin.php');
+        $this->loadRoutesFrom(__DIR__ . '/Routes/admin.php');
 
-        $this->loadMigrationsFrom(__DIR__ .'/Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
 
-        $this->loadViewsFrom(__DIR__.'/Resources/Views', 'page');
+        $this->loadViewsFrom(__DIR__ . '/Resources/Views', 'page');
 
-        $this->loadTranslationsFrom(__DIR__.'/Resources/Lang/', 'page');
+        $this->loadTranslationsFrom(__DIR__ . '/Resources/Lang/', 'page');
 
         $this->addDynamicRelations();
 
-    }
 
+        //Add additional fields to admin crud
+        $this->setAdditionalFields();
+
+    }
 
 
     private function addDynamicRelations()
@@ -50,5 +52,25 @@ class PageServiceProvider extends ServiceProvider
             return $menuItem->belongsTo(Page::class);
         });
     }
+
+
+    private function setAdditionalFields()
+    {
+        $crud = resolve('Crud');
+
+        $page = [
+            'crudName' => 'menuItem',
+            'fields'   => [
+                'name'     => 'page_id',
+                'type'     => 'relation',
+                'relation' => ['page', 'name'],
+                'visible'  => 'ce'
+            ]
+        ];
+        $crud->addAdditionalFields($page);
+
+
+    }
+
 
 }
