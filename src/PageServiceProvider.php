@@ -62,6 +62,7 @@ class PageServiceProvider extends ServiceProvider
             'crudName' => 'menuItem',
             'fields'   => [
                 'name'     => 'page_id',
+                'display'  => 'page',
                 'type'     => 'relation',
                 'relation' => ['page', 'name'],
                 'visible'  => 'ce'
