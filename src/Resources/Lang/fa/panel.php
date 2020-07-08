@@ -14,7 +14,9 @@ return [
     'is_active'         => 'فعال',
     'category'          => 'دسته بندی',
     'page'              => 'صفحه',
-    'url'               => 'URL'
+    'url'               => 'URL',
+    'system'             => 'سیستم',
+    'pages'             => 'صفحات',
 
 
 ];

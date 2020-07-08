@@ -43,6 +43,8 @@ class PageServiceProvider extends ServiceProvider
         //Add additional fields to admin crud
         $this->setAdditionalFields();
 
+        $this->adminMenu();
+
     }
 
 
@@ -73,5 +75,13 @@ class PageServiceProvider extends ServiceProvider
 
     }
 
+
+    private function adminMenu()
+    {
+        $menu = resolve('AdminMenu');
+        $menu->item('system')->title('page::panel.system')->link('#')->add();
+        $menu->item('system.page')->title('page::panel.pages')->route('page.index')->add();
+
+    }
 
 }

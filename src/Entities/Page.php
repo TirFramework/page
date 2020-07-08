@@ -108,18 +108,23 @@ class Page extends CrudModel
                             [
                                 'name'      => 'slug',
                                 'type'      => 'text',
-                                'visible'   => 'ice',
+                                'visible'   => 'ce',
                             ],
                             [
                                 'name'      => 'body',
                                 'type'      => 'textEditor',
-                                'visible'   => 'ice',
+                                'visible'   => 'ce',
+                            ],
+                            [
+                                'name'      => 'created_at',
+                                'type'      => 'text',
+                                'visible'   => 'i',
                             ],
                             [
                                 'name'       => 'is_active',
                                 'type'       => 'select',
                                 'data'       => ['1'=>trans('menu::panel.yes'),'0'=>trans('menu::panel.no')],
-                                'visible'    => 'ce',
+                                'visible'    => 'icef',
                             ],
 
 
@@ -132,6 +137,10 @@ class Page extends CrudModel
 
     //Additional methods //////////////////////////////////////////////////////////////////////////////////////////////
 
+    public function getCreatedAtAttribute($date)
+    {
+        return jdate($date)->ago();
+    }
 
     public static function urlForPage($id)
     {
