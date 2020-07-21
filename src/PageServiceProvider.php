@@ -79,8 +79,8 @@ class PageServiceProvider extends ServiceProvider
     private function adminMenu()
     {
         $menu = resolve('AdminMenu');
-        $menu->item('system')->title('page::panel.system')->link('#')->add();
-        $menu->item('system.page')->title('page::panel.pages')->route('page.index')->add();
+        $menu->item('content')->title('page::panel.content')->link('#')->add();
+        $menu->item('content.page')->title('page::panel.pages')->route('page.index')->add();
 
     }
 
