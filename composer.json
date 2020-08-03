@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "tir/crud": "dev-master"
+        "tir/crud": "*"
     },
 
     "autoload": {
