@@ -43,10 +43,10 @@ class PageServiceProvider extends ServiceProvider
         // $this->addDynamicRelations();
 
 
-        // //Add additional fields to admin crud
-        // $this->setAdditionalFields();
+         //Add additional fields to admin crud
+         $this->setAdditionalFields();
 
-        // $this->adminMenu();
+         $this->adminMenu();
 
     }
 
@@ -63,17 +63,17 @@ class PageServiceProvider extends ServiceProvider
     {
         $crud = resolve('Crud');
 
-        // $page = [
-        //     'crudName' => 'menuItem',
-        //     'fields'   => [
-        //         'name'     => 'page_id',
-        //         'display'  => 'page',
-        //         'type'     => 'relation',
-        //         'relation' => ['page', 'name'],
-        //         'visible'  => 'ce'
-        //     ]
-        // ];
-        // $crud->addAdditionalFields($page);
+         $page = [
+             'crudName' => 'menuItem',
+             'fields'   => [
+                 'name'     => 'page_id',
+                 'display'  => 'page',
+                 'type'     => 'relation',
+                 'relation' => ['page', 'name'],
+                 'visible'  => 'ce'
+             ]
+         ];
+         $crud->addAdditionalFields($page);
 
 
     }
