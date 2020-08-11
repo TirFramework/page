@@ -7,6 +7,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Tir\Crud\Support\Eloquent\CrudModel;
 use Tir\Crud\Support\Facades\Crud;
 
+use Config;
+use File;
+
+
 class Page extends CrudModel
 {
     //Additional trait insert here
@@ -26,7 +30,7 @@ class Page extends CrudModel
      *
      * @var array
      */
-    protected $fillable = ['name','body','slug', 'is_active'];
+    protected $fillable = ['name','body','slug', 'status', 'template'];
 
     /**
      * The attributes that are translatable.
@@ -71,8 +75,9 @@ class Page extends CrudModel
         return [
             'name' => 'required',
             'slug' => 'required',
-            'is_active' => 'required',
-            'body' => 'required'
+            'status' => 'required',
+            'body' => 'required',
+            'template' => 'required',
         ];
     }
 
@@ -84,6 +89,18 @@ class Page extends CrudModel
      */
     public function getFields()
     {
+
+
+        
+        $path = Config::get('view.paths')[0]. '/pages';
+        $templates = File::allFiles($path);
+        $nameTemplate = [];
+        foreach($templates as $template) {
+            $value = str_replace(".blade", "", pathinfo($template, PATHINFO_FILENAME));
+            $nameTemplate[$value] = trans('panel.'.$value);
+        }
+
+
         $fields = [
             [
                 'name' => 'basic_information',
@@ -121,15 +138,42 @@ class Page extends CrudModel
                                 'visible'   => 'i',
                             ],
                             [
-                                'name'       => 'is_active',
-                                'type'       => 'select',
-                                'data'       => ['1'=>trans('menu::panel.yes'),'0'=>trans('menu::panel.no')],
-                                'visible'    => 'icef',
+                                'name'      =>"template",
+                                'type'      =>'select',
+                                'data'      => $nameTemplate,
+                                'visible'   =>'ce',
                             ],
-
-
+                            [
+                                'name'    => 'status',
+                                'type'    => 'select',
+                                'validation' => 'required',
+                                'data'    => ['published'   => trans('post::panel.published'),
+                                              'unpublished' => trans('post::panel.unpublished')
+                                ],
+                                'visible' => 'icef',
+                            ],
+                        ]
+                    ],
+                    [
+                        'name'    => 'meta',
+                        'type'    => 'tab',
+                        'visible' => 'ce',
+                        'fields'  => [
+                            [
+                                'name'    => 'meta[keyword]',
+                                'display' => 'meta_keywords',
+                                'type'    => 'text',
+                                'visible' => 'ce',
+                            ],
+                            [
+                                'name'    => 'meta[description]',
+                                'display' => 'meta_description',
+                                'type'    => 'textarea',
+                                'visible' => 'ce',
+                            ],
                         ]
                     ]
+
                 ]
             ]
         ];

@@ -15,7 +15,8 @@ class CreatePagesTable extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug')->unique();
-            $table->boolean('is_active');
+            $table->string('template');
+            $table->enum('status',['draft','published','unpublished'])->default('published');
             $table->timestamps();
         });
     }

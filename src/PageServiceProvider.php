@@ -46,7 +46,7 @@ class PageServiceProvider extends ServiceProvider
         // //Add additional fields to admin crud
         // $this->setAdditionalFields();
 
-        // $this->adminMenu();
+        $this->adminMenu();
 
     }
 

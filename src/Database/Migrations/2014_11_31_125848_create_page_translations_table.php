@@ -18,6 +18,8 @@ class CreatePageTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->text('body');
+            
+            $table->text('meta')->nullable();
 
             $table->unique(['page_id', 'locale']);
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
