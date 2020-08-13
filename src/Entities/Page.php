@@ -181,10 +181,10 @@ class Page extends CrudModel
 
     //Additional methods //////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function getCreatedAtAttribute($date)
-    {
-        return jdate($date)->ago();
-    }
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     return jdate($date)->ago();
+    // }
 
     public static function urlForPage($id)
     {
