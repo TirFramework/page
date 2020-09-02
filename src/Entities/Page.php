@@ -97,7 +97,7 @@ class Page extends CrudModel
         $nameTemplate = [];
         foreach($templates as $template) {
             $value = str_replace(".blade", "", pathinfo($template, PATHINFO_FILENAME));
-            $nameTemplate[$value] = trans('panel.'.$value);
+            $nameTemplate[$value] = trans('page::panel.'.$value);
         }
 
 
@@ -116,6 +116,11 @@ class Page extends CrudModel
                                 'name'       => 'id',
                                 'type'       => 'text',
                                 'visible'    => 'io',
+                            ],
+                            [
+                                'name'       => 'page.details',
+                                'type'       => 'preview',
+                                'visible'    => 'e',
                             ],
                             [
                                 'name'      => 'name',
