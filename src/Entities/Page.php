@@ -6,12 +6,13 @@ use Astrotomic\Translatable\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Tir\Crud\Support\Eloquent\CrudModel;
 use Tir\Crud\Support\Facades\Crud;
+use Tir\Metadata\Eloquent\HasMetaData;
 
 class Page extends CrudModel
 {
     //Additional trait insert here
 
-    use Translatable, Sluggable;
+    use Translatable, Sluggable, HasMetaData;
 
     /**
      * The attribute show route name
@@ -91,7 +92,7 @@ class Page extends CrudModel
                 'visible'    => 'ce',
                 'tabs'=>  [
                     [
-                        'name'  => 'menu_information',
+                        'name'  => 'page_information',
                         'type'  => 'tab',
                         'visible'    => 'ce',
                         'fields' => [
@@ -129,7 +130,40 @@ class Page extends CrudModel
 
 
                         ]
+                    ],
+                    [
+                        'name'    => 'meta',
+                        'type'    => 'tab',
+                        'visible' => 'ce',
+                        'fields'  => [
+                            [
+                                'name'    => 'meta[meta_title]',
+                                'display' => 'meta_title',
+                                'type'    => 'text',
+                                'visible' => 'ce',
+                            ],
+                            [
+                                'name'    => 'meta[meta_keywords]',
+                                'display' => 'meta_keywords',
+                                'type'    => 'metaKeywords',
+                                'multiple' => true,
+                                'visible' => 'ce',
+                            ],
+                            [
+                                'name'    => 'meta[meta_description]',
+                                'display' => 'meta_description',
+                                'type'    => 'textarea',
+                                'visible' => 'ce',
+                            ],
+                            [
+                                'name'    => 'meta[meta_custom]',
+                                'display' => 'meta_custom',
+                                'type'    => 'textarea',
+                                'visible' => 'ce',
+                            ],
+                        ]
                     ]
+
                 ]
             ]
         ];

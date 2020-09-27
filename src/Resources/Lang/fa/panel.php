@@ -17,6 +17,12 @@ return [
     'url'               => 'URL',
     'system'             => 'سیستم',
     'pages'             => 'صفحات',
+    'meta'                => 'تنظیمات متا',
+    'meta_description' => 'توضیحات متا',
+    'meta_keywords'    => 'کلیدواژه‌های متا',
+    'meta_title'       => 'عنوان متا',
+    'meta_custom'      => 'متا اختصاصی',
+
 
 
 ];
