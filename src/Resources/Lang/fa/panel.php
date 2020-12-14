@@ -2,10 +2,9 @@
 
 return [
     'basic_information' => 'اطلاعات پایه',
-    'menu_information'  => 'اطلاعات منو',
-    'menu'              => 'منو',
-    'menus'             => 'منوها',
-    'new_menu'          => 'منو جدید',
+    'page_information'  => 'اطلاعات صفحه',
+    'new_page'          => 'صفحه‌ جدید',
+    'slug'              => 'نامک',
     'id'                => 'کد',
     'name'              => 'نام',
     'action'            => 'عملیات',
