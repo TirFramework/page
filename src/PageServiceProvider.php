@@ -26,6 +26,8 @@ class PageServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+
         if (! config('app.installed')) {
             return;
         }
@@ -34,7 +36,6 @@ class PageServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/Routes/admin.php');
 
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
 
         $this->loadViewsFrom(__DIR__ . '/Resources/Views', 'page');
 
